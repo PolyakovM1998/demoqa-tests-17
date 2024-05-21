@@ -4,7 +4,6 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import pages.components.RegistrationResultsModal;
-import pages.components.RegistrationResultsModal;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -13,8 +12,8 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
     private final String TITLE_TEXT = "Student Registration Form";
+    RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
     private CalendarComponent calendarComponent = new CalendarComponent();
-    private RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
     private SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
@@ -76,6 +75,7 @@ public class RegistrationPage {
 
         return this;
     }
+
 /*
     *** SELENIUM
     @FindBy(how = How.XPATH, xpath = ".//*[@class='submit']")

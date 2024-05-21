@@ -4,11 +4,13 @@ package demoqa;
 import org.junit.jupiter.api.Test;
 
 
+import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 
-public class HomeWorkDemoqaWithPageObjects1 extends TestBase {
+public class HomeWorkDemoqaWithPageObjects extends TestBase {
 
 
     @Test
@@ -34,12 +36,10 @@ public class HomeWorkDemoqaWithPageObjects1 extends TestBase {
         $("#submit").click();
 
         registrationPage.verifyResultsModalAppears()
-                        .verifyResult("Student Name", userName + "Polyakov")
-                        .verifyResult("Student Email","mishka-polyakov007@mail.ru")
-                        .verifyResult("Gender", "Male")
-                        .verifyResult("Mobile", "1234567890")
-                        .verifyResult("Date of Birth", "30 July,2008");
-
+                .verifyResult("Student Name", userName + " Polyakov")
+                .verifyResult("Student Email", "mishka-polyakov007@mail.ru")
+                .verifyResult("Gender", "Male")
+                .verifyResult("Mobile", "1234567890")
+                .verifyResult("Date of Birth", "30 July,2008");
     }
 }
-
