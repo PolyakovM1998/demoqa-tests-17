@@ -1,28 +1,24 @@
 package demoqa;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
+import java.io.File;
+
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class HomeWithPageObjectWorkDemoqa extends TestBase {
 
     @Test
     void homeWorkDemoqa(){
-        String userName = "Misha";
-        String subjects = "Maths";
-        String hobbies = "Sports";
-        String currentaddress = "Perevoz";
-        String state = "NCR";
-        String city = "Delhi";
-        String submit = "Submit";
+        String
+               userName = "Misha",
+               subjects = "Maths",
+               hobbies = "Sports",
+               currentaddress = "Perevoz",
+               state = "NCR",
+               city = "Delhi",
+               submit = "Submit",
+               image = "img1.jpg";
 
         registrationPage.openPage()
                 .setFirstName(userName)
@@ -36,10 +32,9 @@ public class HomeWithPageObjectWorkDemoqa extends TestBase {
                 .setCurrentAdress(currentaddress)
                 .setState(state)
                 .setCity(city)
-                .setSubmit(submit);
+                .setSubmit(submit)
+                .setImage(image);
 
-
- //       $("#uploadPicture").uploadFromClasspath(("img/1.png"));//вариант 44 строки
         registrationPage.verifyResultsModalAppears()
                 .verifyResult("Student Name", userName + " Polyakov")
                 .verifyResult("Student Email", "mishka-polyakov007@mail.ru")
@@ -48,6 +43,7 @@ public class HomeWithPageObjectWorkDemoqa extends TestBase {
                 .verifyResult("Date of Birth", "30 July,2008")
                 .verifyResult("Subjects","Maths")
                 .verifyResult("Hobbies", "Sports")
+                .verifyResult("Picture", image)
                 .verifyResult("Address","Perevoz")
                 .verifyResult("State and City", state+" "+city);
 

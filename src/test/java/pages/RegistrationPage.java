@@ -4,18 +4,29 @@ import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import pages.components.RegistrationResultsModal;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
     private final String TITLE_TEXT = "Student Registration Form";
     private CalendarComponent calendarComponent = new CalendarComponent();
-     private RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
+    private RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
     private SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
-            dateOfBirthInput = $("#dateOfBirthInput");
+            subjectsInput = $("#subjectsInput"),
+            dateOfBirthInput = $("#dateOfBirthInput"),
+            hobbiesInput = $("#hobbiesWrapper"),
+            currentadressInput =  $("#currentAddress"),
+            imageInput = $("#uploadPicture"),
+            stateInput = $("#state"),
+            cityInput = $("#city"),
+            statecitywrapper = $("#stateCity-wrapper"),
+            submitInput = $("#submit");
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -65,6 +76,47 @@ public class RegistrationPage {
     public RegistrationPage setBirthDate(String day, String month, String year) {
         dateOfBirthInput.click();
         calendarComponent.setDate(day, month, year);
+        return this;
+    }
+
+    public RegistrationPage setSubjects (String value) {
+        subjectsInput.setValue(value).pressEnter();
+        return this;
+    }
+
+    public RegistrationPage setHobbies (String value) {
+        hobbiesInput.$(byText(value)).click();
+        return this;
+    }
+
+    public RegistrationPage setCurrentAdress(String value) {
+        currentadressInput.setValue(value);
+
+        return this;
+    }
+
+    public RegistrationPage setImage(String image ) {
+        imageInput.uploadFile(new File("src/test/java/resources/" + image));
+        return this;
+    }
+
+    public RegistrationPage setState(String value) {
+         stateInput.click();
+         statecitywrapper.$(byText(value)).click();
+
+        return this;
+    }
+
+    public RegistrationPage setCity(String value) {
+        cityInput.click();
+        statecitywrapper.$(byText(value)).click();
+
+        return this;
+    }
+
+    public RegistrationPage setSubmit(String value) {
+        submitInput.click();
+
         return this;
     }
 
