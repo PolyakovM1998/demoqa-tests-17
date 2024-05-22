@@ -44,7 +44,7 @@ public class HomeWorkDemoqa {
         $("#subjectsInput").setValue("Maths").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
 //        $("#uploadPicture").uploadFile(new File("src/test/resources/img/1.png"));
-        $("#uploadPicture").uploadFromClasspath(("img/1.png"));//вариант 44 строки
+ //       $("#uploadPicture").uploadFromClasspath(("img/1.png"));//вариант 44 строки
         $("#currentAddress").setValue("Perevoz");
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
